@@ -6,6 +6,7 @@ let countries;
 fetch(API_URL_ALL)
 .then((response)=> response.json())
 .then((countriesRaw) => {
+    console.log(countriesRaw);
     countries = countriesRaw.map((country) => {
         return {
             capital: country.capital && country.capital[0],
@@ -14,6 +15,7 @@ fetch(API_URL_ALL)
             region: country.region,
             flagUrl: country.flags.png,
             area: country.area,
+            languages: country.languages,
         };
      })
      renderCountriesList(countries);

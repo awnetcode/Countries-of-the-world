@@ -20,11 +20,45 @@
 body{
     font-size: 14px;
     font-family: 'Nunito Sans';
+    background: var(--color-background);   
 }
 
-header, main{
+ main{
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 32px;
+}
+
+header{
+    background: var(--White);
+}
+
+.header-content{
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    margin: 32px auto 64px;
+    padding: 32px 0 64px;
+}
+
+header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#query{
+    background-color: var(--color-background);
+    box-shadow: 0px 0px 5px 1px rgb(66 68 90);
+    padding: 15px 30px;
+    border: none;
 }
 
 ul{
@@ -34,13 +68,19 @@ ul{
     list-style-type: none;
 }
 
+li{
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0px 0px 5px 2px rgb(66 68 90); 
+}
+
 li img{
     aspect-ratio: 160/98;
     width: 100%;
 }
 
 .info-container{
-    border: 1px solid var(--color-text);
     padding: 30px 20px;
 }
 
@@ -48,4 +88,22 @@ li img{
     display: block;
     font-size: 18px;
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width:800px){
+    ul{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width:600px){
+    ul{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width:400px){
+    ul{
+        grid-template-columns: 1fr;
+    }
 }

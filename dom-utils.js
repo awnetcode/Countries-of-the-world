@@ -16,6 +16,7 @@ const createFlagItemElement = (country) =>{
     const imgContainerElement = document.createElement("div");
     const imgElement = document.createElement("img");
     imgElement.src = country.flagUrl;
+    imgElement.alt = `${country.countryName} flag`;
 
     imgContainerElement.appendChild(imgElement);
 
@@ -35,9 +36,11 @@ const createCountryItemElement = (country) =>{
     infoContainerElement.classList.add("info-container");
 
     infoContainerElement.appendChild(countryNameElement);
-    infoContainerElement.appendChild(createInfoElement("Population", country.population));
     infoContainerElement.appendChild(createInfoElement("Region", country.region));
+    infoContainerElement.appendChild(createInfoElement("Area", country.area));
+    infoContainerElement.appendChild(createInfoElement("Population", country.population));
     infoContainerElement.appendChild(createInfoElement("Capital", country.capital));
+    infoContainerElement.appendChild(createInfoElement("Languages", country.languages));
 
     countryElement.appendChild(infoContainerElement);
 
