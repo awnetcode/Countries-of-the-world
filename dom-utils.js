@@ -32,7 +32,7 @@ const createCountryItemElement = (country) =>{
 
 
 
-    anchorElement.href= `?country=${country.countryName}`;
+    anchorElement.href= `?country=${country.code}`;
     countryNameElement.innerText = country.countryName;
 
     countryElement.appendChild(createFlagItemElement(country));
@@ -46,7 +46,6 @@ const createCountryItemElement = (country) =>{
     infoContainerElement.appendChild(createInfoElement("Population", country.population));
     infoContainerElement.appendChild(createInfoElement("Capital", country.capital));
     infoContainerElement.appendChild(createInfoElement("Languages", country.languages));
-
 
     infoContainerElement.appendChild(countryMapLinkElement);
     countryMapLinkElement.innerHTML = '<a class="map-link" href="'+country.map+'" target="blank">&#187; See on map &#187;</a>';

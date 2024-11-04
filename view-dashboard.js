@@ -11,19 +11,19 @@ let region = "";
 fetch(API_URL_ALL)
 .then((response)=> response.json())
 .then((countriesRaw) => {
-    //console.log(countriesRaw);
     countries = countriesRaw.map((country) => {
         return {
             capital: country.capital && country.capital[0],
             population: country.population.toLocaleString(),
             countryName: country.name.common,
+            code: country.cioc,
             region: country.region,
             flagUrl: country.flags.png,
             area: country.area,
             languages: country.languages,
             map: country.maps.googleMaps,
         };
-     })
+     });
      renderCountriesList(countries);
     });
 
