@@ -20,7 +20,7 @@ fetch(API_URL_ALL)
             region: country.region,
             flagUrl: country.flags.png,
             area: country.area,
-            languages: country.languages,
+            languages: country.languages ? Object.values(country.languages).join(", ") : "Unknown",
             map: country.maps.googleMaps,
         };
      });
