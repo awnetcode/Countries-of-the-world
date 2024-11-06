@@ -29,8 +29,8 @@ export const renderDetail = () =>{
                 area: country.area,
                 languages: country.languages ? Object.values(country.languages).join(", ") : "Unknown",
                 map: country.maps.googleMaps,
-                tld: country.tld[0], 
-                borders: country.border ? Object.values(country.border[0]).join(", ") : "No borders",  
+                tld: country.tld[0],  
+                borders: country.borders ? Object.values(country.borders).join(", ") : "No borders",  
             }; 
             renderCountryDetails(country);
             console.log(country)  

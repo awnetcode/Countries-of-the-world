@@ -65,41 +65,75 @@ const createListElement = (countries) =>{
 
 const createDetailElement = (country) =>{
     const detailContainerElement = document.createElement("div");
+    detailContainerElement.classList.add("detail-container");
     const flagImgElement = createFlagItemElement(country);
     const detailNameElement = document.createElement("strong");
+    detailNameElement.classList.add("detail-name");
     detailNameElement.innerText = country.countryName;
 
-    detailContainerElement.appendChild(flagImgElement);
-    detailContainerElement.appendChild(detailNameElement);
+    const leftPart = document.createElement("div");
+    const rightPart = document.createElement("div");
+    leftPart.classList.add("detail-part");
+    rightPart.classList.add("detail-part");
 
-    detailContainerElement.appendChild(createInfoElement("Native name", country.nativeName));
-    detailContainerElement.appendChild(createInfoElement("Population", country.population));
-    detailContainerElement.appendChild(createInfoElement("Region", country.region));
-    detailContainerElement.appendChild(createInfoElement("Sub region", country.subregion));
-    detailContainerElement.appendChild(createInfoElement("Capital", country.capital));
-    detailContainerElement.appendChild(createInfoElement("Top level domain", country.tld));
-    detailContainerElement.appendChild(createInfoElement("Currencies", country.currencies));
-    detailContainerElement.appendChild(createInfoElement("Languages", country.languages));
-    detailContainerElement.appendChild(createInfoElement("Borders", country.borders));
+    detailContainerElement.appendChild(flagImgElement);
+    
+
+    detailContainerElement.appendChild(leftPart);
+    detailContainerElement.appendChild(rightPart);
+
+
+    leftPart.appendChild(detailNameElement);
+    leftPart.appendChild(createInfoElement("Native name", country.nativeName));
+    leftPart.appendChild(createInfoElement("Population", country.population));
+    leftPart.appendChild(createInfoElement("Region", country.region));
+    leftPart.appendChild(createInfoElement("Sub region", country.subregion));
+    leftPart.appendChild(createInfoElement("Capital", country.capital));
+    rightPart.appendChild(createInfoElement("Top level domain", country.tld));
+    rightPart.appendChild(createInfoElement("Currencies", country.currencies));
+    rightPart.appendChild(createInfoElement("Languages", country.languages));
+    rightPart.appendChild(createInfoElement("Borders", country.borders));
+
+    const detailMap = document.createElement("iframe");
+    detailMap.classList.add("detail-map");
+    detailMap.src = country.map;
+    detailMap.width = 800;
+    detailMap.height = 600;
+    detailMap.referrerpolicy = "no-referrer-when-downgrade";
+
+//<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2020756.4108567983!2d-11.8374914!3d8.42228685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf0106183aabf343%3A0x5369e9cdc72cf719!2sSierra%20Leone!5e0!3m2!1spl!2sde!4v1730886329878!5m2!1spl!2sde" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   // detailContainerElement.appendChild(detailMap);
 
     return detailContainerElement;
 };
 
 const createDetailButton =(text, link) =>{
     const anchorElement = document.createElement("a");
-    anchorElement.innerText = text;
+    anchorElement.innerHTML = '&larr;'+text;
     anchorElement.classList.add("detail-back-link");
     anchorElement.href = link;
 
     return anchorElement;
 }
 
-
-const createBorderCountriesContainer = () =>{
+/*
+const createBorderCountriesContainer = (country) =>{
     const borderCountriesContainerElement = document.createElement("div");
+    borderCountriesContainerElement.classList.add("border-countries-container");
     const labelElement = document.createElement("strong");
     labelElement.innerText = "Border Countries";
+
+    borderCountriesContainerElement.appendChild(labelElement);
+
+    country.borders.forEach((border)=>{
+        borderCountriesContainerElement.appendChild(
+            createDetailButton(border, `/?country=${border}`)
+        );
+    })
+
+    return borderCountriesContainerElement;
 }
+*/
 
 export const renderCountriesList = (countries) => {
     const rootElement = document.querySelector("#root");
@@ -107,9 +141,11 @@ export const renderCountriesList = (countries) => {
     rootElement.appendChild(createListElement(countries));
 };
 
+
+
 export const renderCountryDetails = (country) => {
     const rootElement = document.querySelector("#root");
     rootElement.innerHTML = "";
-    rootElement.appendChild(createDetailButton("Go back", "/"));
+    rootElement.appendChild(createDetailButton(" Go back", "/"));
     rootElement.appendChild(createDetailElement(country));
 }
