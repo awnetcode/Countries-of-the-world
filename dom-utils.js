@@ -84,6 +84,7 @@ const createDetailElement = (country) =>{
 
 
     leftPart.appendChild(detailNameElement);
+    leftPart.appendChild(createInfoElement("Nazwa polska", country.translations));
     leftPart.appendChild(createInfoElement("Native name", country.nativeName));
     leftPart.appendChild(createInfoElement("Population", country.population));
     leftPart.appendChild(createInfoElement("Region", country.region));
